@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <form>
+        netto palkka: <input type="text" id="palkka" name="palkka"><br>
+        vero aste: <input type="text" id="veroaste" name="veroaste"><br>
+        <input type="button" value="Calculate Salary" onclick="calculateSalary()">
+    </form>
+    <p>brotto palkka : <span id="nettopalkka"></span></p>
+    <p>vero : <span id="vero"></span></p>
+    <p>Työttömyysvakuutus : <span id="työttömyysvakuutus"></span></p>
+    <p>Eläkevakuutus : <span id="eläkevakuutus"></span></p>
+
+    <script>
+        function calculateSalary() {
+            var bruttopalkka = document.getElementById("palkka").value;
+            var veroaste = document.getElementById("veroaste").value;
+            var vero = bruttopalkka * veroaste / 100.0;
+            var työttömyysvakuutus = bruttopalkka * 0.019;
+            var eläkevakuutus = bruttopalkka * 0.0635;
+            var nettopalkka = bruttopalkka - vero - työttömyysvakuutus - eläkevakuutus;
+
+            document.getElementById("nettopalkka").innerHTML = nettopalkka;
+            document.getElementById("vero").innerHTML = vero;
+            document.getElementById("työttömyysvakuutus").innerHTML = työttömyysvakuutus;
+            document.getElementById("eläkevakuutus").innerHTML = eläkevakuutus;
+        }
+    </script>
+
+</body>
+
+</html>
